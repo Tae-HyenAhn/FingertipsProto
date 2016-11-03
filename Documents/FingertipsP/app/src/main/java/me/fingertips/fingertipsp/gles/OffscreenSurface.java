@@ -1,0 +1,21 @@
+package me.fingertips.fingertipsp.gles;
+
+/**
+ * Created by sb on 16. 10. 25..
+ */
+public class OffscreenSurface extends EglSurfaceBase {
+    /**
+     * Creates an off-screen surface with the specified width and height.
+     */
+    public OffscreenSurface(EglCore eglCore, int width, int height) {
+        super(eglCore);
+        createOffscreenSurface(width, height);
+    }
+
+    /**
+     * Releases any resources associated with the surface.
+     */
+    public void release() {
+        releaseEglSurface();
+    }
+}

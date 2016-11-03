@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="me.fingertips.fingertipsp.EditActivity">
+
+    <android.opengl.GLSurfaceView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/edit_surface"
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout3">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Complete"
+                android:id="@+id/edit_complete"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="7dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Go Repeat"
+                android:id="@+id/edit_go_repeat"
+                android:layout_marginTop="7dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:id="@+id/edit_repeat_time"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:hint="Repeat Time"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff"
+                android:textAlignment="center" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:id="@+id/edit_repeat_count"
+                android:layout_weight="1"
+                android:hint="Repeat Count"
+                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
+                android:textAlignment="center" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:id="@+id/edit_repeat_rspeed"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff"
+                android:hint="Reverse Speed(-4~4)"
+                android:textAlignment="center" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:id="@+id/edit_repeat_fspeed"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff"
+                android:textAlignment="center"
+                android:hint="Forward Speed(-4~4)" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout2">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SLOW"
+                android:id="@+id/edit_slow" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FAST"
+                android:id="@+id/edit_fast" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/linearLayout2"
+        android:layout_below="@+id/linearLayout3">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:weightSum="1"
+            android:gravity="center">
+
+            <ImageButton
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:id="@+id/edit_reverse"
+                android:layout_gravity="center_vertical"
+                android:background="@android:drawable/ic_media_rew" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:weightSum="1"
+            android:gravity="center">
+
+            <ImageButton
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:id="@+id/edit_normal"
+                android:layout_gravity="center_vertical"
+                android:background="@android:drawable/ic_media_play" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
