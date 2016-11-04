@@ -32,6 +32,7 @@ public class VideoEncoderCore {
 
     private long timeStamp;
     private int frameRate;
+    private boolean isEdited;
 
     /**
      * Configures encoder and muxer state, and prepares the input Surface.
@@ -48,6 +49,7 @@ public class VideoEncoderCore {
                 MediaCodecInfo.CodecCapabilities.COLOR_FormatSurface);
         format.setInteger(MediaFormat.KEY_BIT_RATE, bitRate);
         format.setInteger(MediaFormat.KEY_FRAME_RATE, frameRate);
+        this.isEdited = isEdited;
         if(!isEdited){
             format.setInteger(MediaFormat.KEY_I_FRAME_INTERVAL, IFRAME_INTERVAL);
         }else{
@@ -186,7 +188,9 @@ public class VideoEncoderCore {
                     encodedData.limit(mBufferInfo.offset + mBufferInfo.size);
                     timeStamp = timeStamp + (1000000/frameRate);
                     //mBufferInfo.presentationTimeUs = timestamp/1000;
-                    mBufferInfo.set(mBufferInfo.offset, mBufferInfo.size, timeStamp,mBufferInfo.flags);
+                    if(isEdited){
+                        mBufferInfo.set(mBufferInfo.offset, mBufferInfo.size, timeStamp,mBufferInfo.flags);
+                    }
                     mMuxer.writeSampleData(mTrackIndex, encodedData, mBufferInfo);
                     //Log.d("PTIMEUS", "PT: "+mBufferInfo.presentationTimeUs);
                     ///if (VERBOSE) {

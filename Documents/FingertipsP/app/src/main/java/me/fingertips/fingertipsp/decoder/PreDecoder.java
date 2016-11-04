@@ -132,7 +132,7 @@ public class PreDecoder extends Thread {
                         Log.d(TAG, "info.presentationTimeUs : " + (info.presentationTimeUs / 1000) + " playTime: " + (System.currentTimeMillis() - startWhen) + " sleepTime : " + sleepTime);
 
                         if (sleepTime > 0)
-                            Thread.sleep(sleepTime/2);
+                            Thread.sleep(sleepTime);
                     } catch (InterruptedException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();

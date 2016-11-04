@@ -214,25 +214,35 @@ public class EditDecoder extends Thread {
                                 long presentationTimeUs = mExtractor.getSampleTime();
 
                                 nowTime = presentationTimeUs;
-                                mDecoder.queueInputBuffer(inputIndex, 0, sampleSize, presentationTimeUs, 0);
+                                //mDecoder.queueInputBuffer(inputIndex, 0, sampleSize, presentationTimeUs, 0);
                                 if(isSpeedMode){
                                     if(isSlow){
                                         slowCount++;
                                         if(slowCount % slow_rate == 0){
-                                            mExtractor.advance();
+                                            nowTime = nowTime +(1000000/frameRate);
+                                            //mExtractor.advance();
                                         }
+                                        mDecoder.queueInputBuffer(inputIndex, 0, sampleSize, presentationTimeUs, 0);
+                                        mExtractor.seekTo(nowTime, MediaExtractor.SEEK_TO_CLOSEST_SYNC);
                                     }
 
                                     if(isFast){
                                         if(fast_rate > 0){
-                                            for(int i=1; i<fast_rate; i++){
-                                                mExtractor.advance();
-                                            }
+                                            //for(int i=1; i<fast_rate; i++){
+                                                nowTime = nowTime + ((1000000/frameRate)*fast_rate);
+                                                mDecoder.queueInputBuffer(inputIndex, 0, sampleSize, presentationTimeUs, 0);
+                                                mExtractor.seekTo(nowTime, MediaExtractor.SEEK_TO_CLOSEST_SYNC);
+                                                //mExtractor.advance();
+                                            //}
                                         }
                                     }
                                 }else if(!isSpeedMode){
-                                    mExtractor.advance();
+                                    nowTime = nowTime + (1000000/frameRate);
+                                    mDecoder.queueInputBuffer(inputIndex, 0, sampleSize, nowTime, 0);
+                                    mExtractor.seekTo(nowTime, MediaExtractor.SEEK_TO_CLOSEST_SYNC);
 
+
+                                    //mExtractor.advance();
                                 }
 
                             }else{
@@ -338,6 +348,7 @@ public class EditDecoder extends Thread {
                     try {
                         //long sleepTime = (info.presentationTimeUs / 1000) - (System.currentTimeMillis() - startWhen);
                         //if(sleepTime < 0){
+                        Log.d("frameRate", frameRate+"-DECODE_FRAMERATE");
                         long sleepTime = 1000/frameRate;
                         //}
                         //long sleepTime = 1000/30;
